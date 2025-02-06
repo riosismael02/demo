@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Cargar Persona</title>
+</head>
+<body>
+<h1>Cargar Persona</h1>
+<form method="post" action="/personas/cargar" enctype="multipart/form-data">
+  <label for="nombre">Nombre:</label>
+  <input type="text" id="nombre" name="nombre" required>
+  <br>
+  <label for="apellido">Apellido:</label>
+  <input type="text" id="apellido" name="apellido" required>
+  <br>
+  <label for="foto">Foto:</label>
+  <input type="file" id="foto" name="foto" accept="image/*" required>
+  <br>
+  <button type="submit">Cargar</button>
+</form>
+<br>
+<a th:href="@{/personas/listar}">Ver Lista de Personas</a>
+</body>
+</html>

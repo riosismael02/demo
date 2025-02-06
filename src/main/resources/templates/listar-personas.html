@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Lista de Personas</title>
+</head>
+<body>
+<h1>Lista de Personas</h1>
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Foto</th>
+  </tr>
+  <tr th:each="persona : ${personas}">
+    <td th:text="${persona.id}"></td>
+    <td th:text="${persona.nombre}"></td>
+    <td th:text="${persona.apellido}"></td>
+    <td>
+      <img th:src="'data:image/jpeg;base64,' + ${persona.getFotoBase64()}" width="100" height="100"/>
+    </td>
+  </tr>
+</table>
+<br>
+<a th:href="@{/personas/cargar}">Cargar Nueva Persona</a>
+</body>
+</html>
