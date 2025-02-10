@@ -12,6 +12,6 @@ public class HomeController {
     public String home(Model model) {
         // Puedes agregar atributos al modelo si es necesario
         model.addAttribute("mensaje", "Bienvenido a la página principal");
-        return "home";
+        return "index";
     }
 }

@@ -1,0 +1,99 @@
+.carnet{
+    border:1px solid black;
+}
+.reverso-carnet{
+    padding:0.5rem;
+
+}
+
+.logo{
+    width:10rem;
+
+}
+.carnet {
+    margin-top: 40px;
+    width: 8.5cm !important;
+    height: 5.4cm !important;
+}
+
+.cuerpo-carnet {
+    padding: 0;
+    padding-left: 0.5rem;
+    /*margin-top:0.3rem;*/
+}
+
+.anverso-carnet {
+    margin-bottom: 5em;
+
+}
+
+.cabecera-carnet {
+    text-align: center;
+    align-items: center;
+    color: rgb(0, 102, 204);
+    font-weight: 750;
+    padding:0.2rem;
+
+}
+
+.item-cabecera,
+.info-carnet,
+.foto-carnet {
+    margin: 0px;
+    padding: 0px;
+}
+
+.contenedor-foto-carnet {
+    display: flex;
+    position: relative;
+}
+.renglon-dni {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.foto-carnet {
+    width: 1.8cm !important;
+    height: 2.5cm !important;
+    position: absolute;
+    bottom: 1px;
+    right: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Color negro con transparencia */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra discreta */
+
+}
+
+.renglon {
+    font-size: 11px;
+    margin-top:1px;
+}
+
+.renglon-titulo {
+    text-align:center;
+    font-size: 10px;
+    font-weight:500;
+}
+
+.renglon-bordes-observaciones, .renglon-bordes-vehiculos{
+    padding:1px;
+    text-align:center;
+    margin: 0 auto;
+    font-size:10px;
+    border:1px solid black;
+    width: calc(100% - 0.4rem); /* Resta 2rem del ancho total */
+    margin-bottom: 0.2rem;
+}
+.renglon-bordes-observacione{
+    height:0.7cm;
+}
+
+.renglon-bordes-vehiculos{
+    height:2.4cm;
+}
+.renglon-firmas{
+    font-size:10px;
+}
+
+.escudo-segui, .escudo-er {
+    padding: 0.3rem;
+}

@@ -20,10 +20,6 @@ public class PersonaController {
     @Autowired
     private PersonaService personaService;
 
-    @GetMapping("/cargar")
-    public String mostrarFormularioCarga() {
-        return "cargar-personas";
-    }
 
     @PostMapping("/cargar")
     public String cargarPersona(@RequestParam("nombre") String nombre,
@@ -38,12 +34,6 @@ public class PersonaController {
         return "redirect:/personas/listar";
     }
 
-    @GetMapping("/listar")
-    public String listarPersonas(Model model) {
-        List<Persona> personas = personaService.obtenerTodasLasPersonas();
-        model.addAttribute("personas", personas);
-        return "listar-personas";
-    }
 
     @GetMapping("/vista/{id}")
     public String vistaPreviaPersona(@PathVariable("id") Long id, Model model) {
