@@ -11,7 +11,7 @@ public class Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    private String dni;
     private String nombre;
     private String apellido;
 
@@ -23,10 +23,11 @@ public class Persona {
     }
 
     // Constructor con parámetros
-    public Persona(String nombre, String apellido, byte[] foto) {
+    public Persona(String nombre, String apellido,  byte[] foto, String dni) { 
         this.nombre = nombre;
         this.apellido = apellido;
         this.foto = foto;
+        this.dni = dni;
     }
 
     public Long getId() {
@@ -62,5 +63,13 @@ public class Persona {
     }
     public String getFotoBase64() {
         return Base64.getEncoder().encodeToString(this.foto);
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 }

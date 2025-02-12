@@ -14,5 +14,8 @@ public interface PersonaService {
     List<Persona> obtenerTodasLasPersonas();
 
     void eliminarPersona(Long id);
+
+    List<Persona> buscarPorNombre(String nombre);
+    List<Persona> buscarPorDni(String dni);
 }
 

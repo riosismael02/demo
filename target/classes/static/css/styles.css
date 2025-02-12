@@ -1,31 +1,62 @@
-.carnet{
-    border:1px solid black;
+body {
+    background-color: #f8f9fa; /* Color light de Bootstrap */
+  }
+
+  .navbar-toggler {
+    border: none!important;
 }
+
+.navbar-toggler:focus,
+.navbar-toggler:active {
+    outline: none!important;
+    box-shadow: none!important;
+}
+  
+  .carnet {
+    position: relative;
+    background-color: white;
+    border-radius: 10px; /* Opcional para bordes redondeados */
+}
+
+/* Borde externo usando box-shadow */
+.carnet::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 1px solid rgb(158, 158, 158); /* Color y grosor del borde */
+    border-radius: 10px; /* Debe coincidir con el .carnet */
+    z-index: -1; /* Para que esté por fuera y no sobre el contenido */
+}
+
 .reverso-carnet{
     padding:0.5rem;
-
+}
+.anverso-carnet{
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
 }
 
+
 .logo{
-    width:10rem;
+    width:11rem;
 
 }
 .carnet {
-    margin-top: 40px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     width: 8.5cm !important;
     height: 5.4cm !important;
 }
 
 .cuerpo-carnet {
     padding: 0;
-    padding-left: 0.5rem;
+    padding-left: 0.6rem;
     /*margin-top:0.3rem;*/
 }
 
-.anverso-carnet {
-    margin-bottom: 5em;
-
-}
 
 .cabecera-carnet {
     text-align: center;
@@ -56,8 +87,8 @@
     width: 1.8cm !important;
     height: 2.5cm !important;
     position: absolute;
-    bottom: 1px;
-    right: 10px;
+    bottom: 3px;
+    right: 5px;
     border: 1px solid rgba(0, 0, 0, 0.1); /* Color negro con transparencia */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra discreta */
 
@@ -97,3 +128,8 @@
 .escudo-segui, .escudo-er {
     padding: 0.3rem;
 }
+
+.img-lista-personas{
+    width: 4rem;
+}
+

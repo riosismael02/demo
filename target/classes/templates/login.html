@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Ingreso SIGECA</title>
+</head>
+<body>
+<h2>Ingresar</h2>
+<form th:action="@{/login}" method="post">
+    <div><label for="username">Usuario</label>
+    <input type="text" id="username" name="username" required="required"/></div>
+    <div><label for="password">Contraseña</label>
+    <input type="password" id="password" name="password" required="required"/></div>
+    <div><input type="submit" value="Login"/></div>
+</form>
+</body>
+</html>

@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
@@ -15,24 +14,24 @@ public class NavigationController {
     @Autowired
     private PersonaService personaService;
 
-    @GetMapping("/personas/cargar")
+    @GetMapping("/personas/carga")
     public String mostrarFormularioCarga() {
         return "cargar-personas";
     }
 
-    @GetMapping("/personas/renovar")
+    @GetMapping("/personas/renovacion")
     public String mostrarFormularioRenovacion() {
         return "renovar-carnet";
     }
 
-    @GetMapping("/personas/listar")
+    @GetMapping("/personas/listado")
     public String listarPersonas(Model model) {
         List<Persona> personas = personaService.obtenerTodasLasPersonas();
         model.addAttribute("personas", personas);
         return "listar-personas";
     }
 
-    @GetMapping("/personas/buscar")
+    @GetMapping("/personas/busqueda")
     public String mostrarFormularioBusqueda() {
         return "buscar";
     }

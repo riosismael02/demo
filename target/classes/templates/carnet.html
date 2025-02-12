@@ -1,92 +1,110 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" th:href="@{/css/styles.css}">
-    <!--  PARA DESAROLLO-->
-    <link rel="stylesheet" href="/css/styles.css?version=${#dates.createNow().time}"/>
-    <title>Licencia de Conducir</title>
-</head>
-<body>
 
-<div th:replace="~{fragments/header :: body}"></div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" th:href="@{/css/styles.css}">
+        <!--  PARA DESAROLLO-->
+        <link rel="stylesheet" href="/css/styles.css?version=${#dates.createNow().time}" />
+        <title>Vista previa del Carnet</title>
+    </head>
 
-<div class="anverso-carnet carnet container"
-     style="background: linear-gradient(rgba(255, 255, 255, 0.90), rgba(255, 255, 255, 0.90)),
+    <!-- HEADER -->
+    <div th:replace="~{fragments/header :: body}"></div>
+
+    <!-- ANVERSO Y REVERSO CARNET -->
+    <div class="container">
+        <div class="row d-flex flex-wrap justify-content-evenly">
+            <!-- ANVERSO -->
+            <div class="anverso-carnet carnet col-lg-6 col-12" style="background: linear-gradient(rgba(255, 255, 255, 0.90), rgba(255, 255, 255, 0.90)),
             url('/images/escudo-segui.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;">
-    <div class="cabecera-carnet row">
-        <div class="item-cabecera col-2"><img class="img-fluid escudo-er" th:src="@{/images/escudo-er.png}"
-                                              alt="escudo-er"></div>
-        <div class="item-cabecera col-8">
-            <div class="renglon">República Argentina - Entre Ríos</div>
-            <div class="renglon">Municipalidad de Seguí</div>
-            <div class="renglon">Registro de Conducir Ley 24.449</div>
+                <div class="cabecera-carnet row">
+                    <div class="item-cabecera col-2"><img class="img-fluid escudo-er" th:src="@{/images/escudo-er.png}"
+                            alt="escudo-er"></div>
+                    <div class="item-cabecera col-8">
+                        <div class="renglon">República Argentina - Entre Ríos</div>
+                        <div class="renglon">Municipalidad de Seguí</div>
+                        <div class="renglon">Registro de Conducir Ley 24.449</div>
 
-        </div>
-        <div class="item-cabecera col-2"><img class="img-fluid escudo-segui" th:src="@{/images/escudo-segui.png}"
-                                              alt="escudo-er">
-        </div>
-    </div>
-    <div class="cuerpo-carnet row">
-        <div class="info-carnet col-9">
-            <div class="renglon">Titular: <strong th:text="${persona.nombre + ' ' + persona.apellido}"></strong></div>
-            <div class="renglon">Domicilio: <strong>25 de Mayo, Esq. Battisti s/n</strong>
+                    </div>
+                    <div class="item-cabecera col-2"><img class="img-fluid escudo-segui"
+                            th:src="@{/images/escudo-segui.png}" alt="escudo-er">
+                    </div>
+                </div>
+                <div class="cuerpo-carnet row">
+                    <div class="info-carnet col-9">
+                        <div class="renglon">Titular: <strong
+                                th:text="${persona.nombre + ' ' + persona.apellido}"></strong>
+                        </div>
+                        <div class="renglon">Domicilio: <strong>25 de Mayo, Esq. Battisti s/n</strong>
+                        </div>
+                        <div class="renglon renglon-dni">D.Identidad: <strong class="dni"> 43827368</strong>
+                            G.Sanguíneo:
+                            <strong> A
+                                (rh+)</strong>
+                        </div>
+                        <div class="renglon">Registro de Conducir Núm: <strong> 43827368</strong></div>
+                        <div class="renglon">Clase: <strong> A2.1-A1.1-A1.3-B1</strong></div>
+                        <div class="fechas row">
+                            <div class="renglon col-4">
+                                <div class="">Nacido el:</div>
+                                <div class=""><strong> 22/02/2002</strong></div>
+                            </div>
+                            <div class="renglon col-4">
+                                <div class="">Emitido el:</div>
+                                <div class=""><strong> 22/02/2002</strong></div>
+                            </div>
+                            <div class="renglon col-4">
+                                <div class="">Vence el:</div>
+                                <div class=""><strong> 22/02/2002</strong></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="contenedor-foto-carnet col-3"><img class="img-fluid foto-carnet"
+                            th:src="'data:image/jpeg;base64,' + ${persona.getFotoBase64()}"
+                            alt="Foto de ${persona.nombre}">
+                    </div>
+                </div>
             </div>
-            <div class="renglon renglon-dni">D.Identidad: <strong class="dni"> 43827368</strong> G.Sanguíneo: <strong> A
-                (rh+)</strong></div>
-            <div class="renglon">Registro de Conducir Núm: <strong> 43827368</strong></div>
-            <div class="renglon">Clase: <strong> A2.1-A1.1-A1.3-B1</strong></div>
-            <div class="fechas row">
-                <div class="renglon col-4">
-                    <div class="">Nacido el:</div>
-                    <div class=""><strong> 22/02/2002</strong></div>
+            <!-- REVERSO -->
+            <div class="reverso-carnet carnet col-lg-6 col-12">
+                <div class="observaciones-carnet">
+                    <div class="renglon-titulo">OBSERVACIONES Y RESTRICCIONES IMPUESTAS AL CONDUCTOR:</div>
+                    <div class="renglon-bordes-observaciones">NO dondante de organos.-</div>
                 </div>
-                <div class="renglon col-4">
-                    <div class="">Emitido el:</div>
-                    <div class=""><strong> 22/02/2002</strong></div>
+                <div class="vehiculos-carnet">
+                    <div class="renglon-titulo">VEHÍCULOS HABILITADOS A CONDUCIR:</div>
+                    <div class="renglon-bordes-vehiculos">askdlakmlkcblklkajlkasjdlkajsdlkajdlkajsldajlsdald</div>
                 </div>
-                <div class="renglon col-4">
-                    <div class="">Vence el:</div>
-                    <div class=""><strong> 22/02/2002</strong></div>
+                <div class="encargado-carnet row">
+                    <div class="renglon-titulo col-7">Encargado Inpección y Fiscalización:</div>
+                    <div class="renglon-titulo firma titular col-5">Firma titular:</div>
                 </div>
             </div>
-
         </div>
-        <div class="contenedor-foto-carnet col-3"><img class="img-fluid foto-carnet"
-                                                       th:src="'data:image/jpeg;base64,' + ${persona.getFotoBase64()}"
-                                                       alt="Foto de ${persona.nombre}"></div>
     </div>
-</div>
-<div class="reverso-carnet carnet container">
-    <div class="observaciones-carnet">
-        <div class="renglon-titulo">OBSERVACIONES Y RESTRICCIONES IMPUESTAS AL CONDUCTOR: </div>
-        <div class="renglon-bordes-observaciones">NO dondante de organos.-</div>
+    <div class="text-center">
+        <button id="btnGenerarPDF" class="btn btn-primary btn-md">
+            <i class="fas fa-file-pdf"></i> Descargar PDF
+        </button>
     </div>
-    <div class="vehiculos-carnet">
-        <div class="renglon-titulo">VEHÍCULOS HABILITADOS A CONDUCIR: </div>
-        <div class="renglon-bordes-vehiculos">askdlakmlkcblklkajlkasjdlkajsdlkajdlkajsldajlsdald</div>
-    </div>
-    <div class="encargado-carnet row">
-        <div class="renglon-titulo col-7">Encargado Inpección y Fiscalización: </div>
-        <div class="renglon-titulo firma titular col-5">Firma titular: </div>
-    </div>
-</div>
-<button id="btnGenerarPDF">Descargar PDF</button>
 
-<!--SCRIPTS-->
-<script th:src="@{/js/generarPDF.js}" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+
+    <!--SCRIPTS-->
+    <script th:src="@{/js/generarPDF.js}" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
-</body>
+    </body>
 
-</html>
+    </html>

@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-
 import com.example.demo.entity.Persona;
 import com.example.demo.service.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,20 +19,20 @@ public class PersonaController {
     @Autowired
     private PersonaService personaService;
 
-
     @PostMapping("/cargar")
     public String cargarPersona(@RequestParam("nombre") String nombre,
                                 @RequestParam("apellido") String apellido,
-                                @RequestParam("foto") MultipartFile file) {
+                                @RequestParam("foto") MultipartFile file,
+                                @RequestParam("dni") String dni) {
         try {
-            Persona persona = new Persona(nombre, apellido, file.getBytes());
+            Persona persona = new Persona(nombre, apellido, file.getBytes(), dni);
             personaService.guardarPersona(persona);
         } catch (IOException e) {
             e.printStackTrace();
+            return "error";  // Devuelve una vista de error si ocurre una excepción
         }
-        return "redirect:/personas/listar";
+        return "redirect:/personas/listado";
     }
-
 
     @GetMapping("/vista/{id}")
     public String vistaPreviaPersona(@PathVariable("id") Long id, Model model) {
@@ -44,5 +43,19 @@ public class PersonaController {
         } else {
             return "redirect:/personas/listar";
         }
+    }
+
+    @GetMapping("/buscar")
+    public String buscarPersonas(@RequestParam("nombre") String nombre,
+            @RequestParam("dni") String dni,
+            Model model) {
+        List<Persona> personas = null;
+        if (!nombre.isEmpty()) {
+            personas = personaService.buscarPorNombre(nombre);
+        } else if (!dni.isEmpty()) {
+            personas = personaService.buscarPorDni(dni);
+        }
+        model.addAttribute("personas", personas);
+        return "resultados-busqueda";
     }
 }
